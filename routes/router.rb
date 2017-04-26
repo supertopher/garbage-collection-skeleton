@@ -2,10 +2,10 @@ get '/' do
   erb :index
 end
 
-get '/cats' do
+get '/quiz' do
   unless request.xhr?
-    erb :cats
+    erb :quiz
   else
-    erb :cats, layout: false
+    erb :quiz, layout: false
   end
 end
