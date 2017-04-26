@@ -1,12 +1,10 @@
-brown-bats7-sinatra-skeleton
+Garbage Collection, you know for Kids!
 ============================
 
-Lecture notes for sinatra skeleton + JS event delegation
+![](http://i.imgur.com/mazF91I.png)
 
-Video of creating this code availibale on youtube and talks.devbootcamp.com
+This project is for Pivotal SF's 2017 Take your child to work day.
 
-https://talks.devbootcamp.com/building-sinatra-from-scratch-with-some-js-event-delegation
+Please feel free to contribute via PR, i'll try and be on top of merges
 
-https://www.youtube.com/watch?v=pWA3FY35g5s&list=UUbMM8vKlwL6zUzmavOKV0gw
 
-feel free to leave me questions or feedback as isues
