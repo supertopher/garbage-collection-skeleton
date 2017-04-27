@@ -3,37 +3,32 @@ get '/' do
 end
 
 get '/quiz' do
-  if params['page_number']
-    @page_number = params['page_number']
+  if params['image']
+    @page_number = params['image'].to_i
   else
-    @page_number = 0 unless params['page_number']
+    @page_number = 0 unless params['image']
   end
-
+  @last_answer_correct = false
   @correct_answer_count = params['correct_answer_count'] || 0
-  @correct_answer_count.to_i
+  @correct_answer_count = @correct_answer_count.to_i
   puts params['last_answer_correct']
   @correct_answer_count += 1 if params['last_answer_correct'] == "true"
+  @last_answer_correct = true if params['last_answer_correct'] == "true"
 
   @next_image_number = @page_number +1
   @image_to_display = find_file_for_page_number @page_number
 
- correct_answer = determine_answer_string @image_to_display.dup
+  if @image_to_display
+    correct_answer = determine_answer_string @image_to_display.dup
+  else
+    redirect "/"
+  end
 
   @landfill=false
   @recycle=false
   @compost=false
 
-
-  case correct_answer
-  when 'landfill'
-    @landfill = true
-  when 'recycle'
-    @recycle = true
-  when 'compost'
-    @compost = true
-  end
-
-
+  set_correct_answer_params correct_answer
 
   unless request.xhr?
     erb :quiz
@@ -60,6 +55,17 @@ def determine_answer_string image_file_name
     image_file_name.reverse!.chop!.reverse!
   end
   image_file_name
+end
+
+def set_correct_answer_params correct_answer
+  case correct_answer
+  when 'landfill'
+    @landfill = true
+  when 'recycle'
+    @recycle = true
+  when 'compost'
+    @compost = true
+  end
 end
 
 
