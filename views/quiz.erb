@@ -1,5 +1,12 @@
 <div class="quiz-header">Which bin does this go in?</div>
-<img src="/1.jpg">
-<div class="landfill">Landfill</div>
-<div class="recycle">Recycle</div>
-<div class="compost">Compost</div>
+
+<% if @last_answer_correct %>
+  <p>You are right!</p>
+<% end %>
+<img src="<%= @image_to_display %>">
+<a href="quiz?image=<%= @next_image_number %>&last_answer_correct=<%= @landfill %>&correct_answer_count=<%= @correct_answer_count %>" class="landfill">Landfill</a>
+
+<a href="quiz?image=<%= @next_image_number %>&last_answer_correct=<%= @recycle %>&correct_answer_count=<%= @correct_answer_count %>" class="recycle">Recycle</a>
+
+<a href="quiz?image=<%= @next_image_number %>&last_answer_correct=<%= @compost %>&correct_answer_count=<%= @correct_answer_count %>" class="compost">Compost</a>
+
